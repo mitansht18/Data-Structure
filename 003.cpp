@@ -1,34 +1,42 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+
+void call_by_refrence_pointer (int& n)
+{
+    cout<<"Address of n in call_by_refrence_pointer function : "<<&n<<endl;
+    n *= n;
+}
+
+void call_by_refrence_pointer (int *n)
+{
+    cout<<"Address of n in call_by_refrence_pointer function : "<<n<<endl;
+    *n *= *n;
+}
+
+int call_by_value(int n)
+{
+    cout<<"Address of n in call_by_value function : "<<&n<<endl;
+    n *= n;
+    return n;
+}
 
 int main()
 {
-    int t,n,num,i;
-     cout<<"Number of elements in array: \n";
-    cin>>n;
-    int a[n];
-     cout<<"Enter the elements of the array: \n";
-    for(int i=0; i<n; i++)
-    {
-        cin>>a[i];
-    }
-    cout<<"Enter number to be deleted: ";
-    cin>>num;
-    for(i=0;i<n;i++)
-    {
-        if(a[i]==num)
-        {
-        t=i;
-        }
-    }
-    for(i=t;i<n;i++)
-    {
-    a[i]=a[i+1];
-    }
-    n=n-1;
-      cout<<"New array after deletion of the element is: "<<endl;
-    for(int i=0;i<n;i++)
-    {
-        cout<<a[i]<<" ";
-    }
+    int n=8;
+    cout<<"Address of n in main() : "<<&n<<endl;
+    call_by_value(n);
+    cout<<"Ans : "<<n<<endl;
+    cout<<"Value of n : "<<n<<endl;
+
+    cout<<endl;
+    cout<<"Address of n in main() : "<<&n<<endl;
+    call_by_refrence_pointer(&n);
+    cout<<"Ans: "<<n<<endl;
+    cout<<"Value of n : "<<n<<endl;
+
+    cout<<endl;
+    cout<<"Address of n in main() : "<<&n<<endl;
+    call_by_refrence_pointer(n);
+    cout<<"Ans: "<<n<<endl;
+    return 0;
 }
