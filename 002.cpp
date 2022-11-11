@@ -1,29 +1,88 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+
+class Stack
+{
+    public:
+    int *arr;
+    int top;
+    int size;
+
+    Stack(int size)
+    {
+        this->size = size;
+        arr = new int[size];
+        top = -1;
+    }
+
+void push(int element)
+{
+    if(size-top>1)
+    {
+        top++;
+        arr[top]=element;
+    }
+    else
+    {
+        cout<<"Stack is overflow"<<endl;
+    }
+
+}
+
+void pop()
+{
+    if(top>=0)
+    {
+        top--;
+    }
+    else
+    {
+        cout<<"Stack underflow"<<endl;
+    }
+}
+
+int peek()
+{
+    if(top>=0)
+    {
+        return arr[top];
+    }
+    else
+    {
+    cout<<"Stack is empty"<<endl;
+    return -1;
+    }
+}
+
+bool isEmpty()
+{
+    if(top==-1)
+    {
+        cout<<"Stack is empty"<<endl;
+    }
+    else
+    {
+        cout<<"Stack is not empty"<<endl;
+    }
+}
+
+};
 
 int main()
 {
-    int n,num,i;
-     cout<<"Number of elements in array: \n";
-    cin>>n;
-    int a[n];
-     cout<<"Enter the elements of the array: \n";
-    for(int i=0; i<n; i++)
-    {
-        cin>>a[i];
-    }
-    cout<<"Enter index at which number should be inserted: ";
-    cin>>num;
-    n=n+1;
-    for(i=n-2;i>=num;i--)
-    {
-        a[i+1]=a[i];
-    }
-    cout<<"Enter number which should be inserted: ";
-    cin>>a[num];
-    cout<<"New array after insertion of the element is: "<<endl;
-    for(int i=0;i<n;i++)
-    {
-        cout<<a[i]<<" ";
-    }
+    Stack st(5);
+    st.push(34);
+    st.push(89);
+
+    cout<<st.peek()<<endl;
+    st.pop();
+    cout<<st.peek()<<endl;
+    st.pop();
+    cout<<st.peek()<<endl;
+
+    if(st.isEmpty())
+    cout<<"Stack is empty :("<<endl;
+    else
+    cout<<"Stack is empty :)"<<endl;
+    return 0;
 }
